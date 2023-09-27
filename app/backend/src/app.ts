@@ -1,5 +1,7 @@
-// Recomençando TFC em outra turma
 import * as express from 'express';
+import TeamRoute from './routes/TeamRoutes';
+import UserRoute from './routes/UserRoutes';
+import MatchesRoute from './routes/MatchesRoutes';
 
 class App {
   public app: express.Express;
@@ -8,6 +10,7 @@ class App {
     this.app = express();
 
     this.config();
+    this.routes();
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
@@ -23,6 +26,12 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+  }
+
+  private routes(): void {
+    this.app.use('/teams', TeamRoute);
+    this.app.use('/login', UserRoute);
+    this.app.use('/matches', MatchesRoute);
   }
 
   public start(PORT: string | number): void {
