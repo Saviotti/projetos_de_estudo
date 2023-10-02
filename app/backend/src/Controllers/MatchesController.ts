@@ -37,4 +37,11 @@ export default class MatchesController {
     const { status, data } = await this.matchService.updateMatches(matchData);
     return res.status(status).json(data);
   }
+
+  public async createMatches(req: Request, res: Response) {
+    const newMatchData = req.body;
+
+    const { status, data } = await this.matchService.createMatches(newMatchData);
+    return res.status(status).json(data);
+  }
 }

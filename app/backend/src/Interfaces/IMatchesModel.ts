@@ -1,7 +1,8 @@
-import IMatches, { IMatchesUpdate } from './IMatches';
+import IMatches, { ICreateMatch, IMatchesUpdate } from './IMatches';
 
 export default interface IMatchesModel {
   findAll(): Promise<IMatches[]>
   finishMatches(id: number): Promise<string>
   updateMatches(matchData: IMatchesUpdate): Promise<void>
+  createMatches(newMatchData: ICreateMatch): Promise<any>
 }

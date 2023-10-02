@@ -1,7 +1,7 @@
 import { ServiceResponse, ServiceMessage } from '../Interfaces/serviceResponse';
 import IMatchesModel from '../Interfaces/IMatchesModel';
 import MatcheModel from '../modelClasses/funcMatches';
-import IMatches, { IMatchesUpdate } from '../Interfaces/IMatches';
+import IMatches, { ICreateMatch, IMatchesUpdate } from '../Interfaces/IMatches';
 
 export default class MatchesService {
   constructor(
@@ -29,5 +29,10 @@ export default class MatchesService {
     await this.matchesModel.updateMatches(matchData);
 
     return { status: 200, data: { message: 'Match updated' } };
+  }
+
+  public async createMatches(newMatchData: ICreateMatch): Promise<ServiceResponse<IMatches>> {
+    const newCreatedMatches = await this.matchesModel.createMatches(newMatchData);
+    return { status: 201, data: newCreatedMatches };
   }
 }
