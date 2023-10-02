@@ -17,4 +17,10 @@ router.patch(
   (req: Request, res: Response) => matchesController.findById(req, res),
 );
 
+router.patch(
+  '/:id',
+  userValidation.tokenValitation,
+  (req: Request, res: Response) => matchesController.updateMatches(req, res),
+);
+
 export default router;

@@ -1,5 +1,5 @@
 import TeamsModel from '../database/models/TeamsModel';
-import IMatches from '../Interfaces/IMatches';
+import IMatches, { IMatchesUpdate } from '../Interfaces/IMatches';
 import IMatchesModel from '../Interfaces/IMatchesModel';
 import MatchesModel from '../database/models/MatchModel';
 
@@ -19,5 +19,10 @@ export default class MatcheModel implements IMatchesModel {
   public async finishMatches(id: number): Promise<string> {
     await this.model.update({ inProgress: false }, { where: { id } });
     return 'Finished';
+  }
+
+  public async updateMatches(matchData: IMatchesUpdate): Promise<void> {
+    const { id, homeTeamGoals, awayTeamGoals } = matchData;
+    await this.model.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
   }
 }
