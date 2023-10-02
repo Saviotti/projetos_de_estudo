@@ -1,3 +1,4 @@
+import { ServiceResponse, ServiceMessage } from '../Interfaces/serviceResponse';
 import IMatchesModel from '../Interfaces/IMatchesModel';
 import MatcheModel from '../modelClasses/funcMatches';
 import IMatches from '../Interfaces/IMatches';
@@ -16,5 +17,11 @@ export default class MatchesService {
     const matches = (await this.matchesModel.findAll()).filter((match) =>
       match.inProgress === bool);
     return matches;
+  }
+
+  public async finishMatch(id: number): Promise<ServiceResponse<ServiceMessage>> {
+    const finishIdMatches = await this.matchesModel.finishMatches(id);
+
+    return { status: 200, data: { message: finishIdMatches } };
   }
 }

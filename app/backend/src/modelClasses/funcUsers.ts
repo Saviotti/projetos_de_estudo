@@ -19,11 +19,6 @@ export default class UserModel {
     return { token: tokenString };
   }
 
-  // public async login(email: string): Promise<IUsers | null> {
-  //   const data = await this.model.findOne({ where: { email } });
-  //   return data;
-  // }
-
   public async findByEmail(email: string): Promise<string | object> {
     const userEmail = await this.model.findOne({ where: { email } });
     return { role: userEmail?.role };
