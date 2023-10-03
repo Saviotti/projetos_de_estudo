@@ -2,7 +2,7 @@ export type ServiceMessage = { message: string };
 
 export type password = string;
 
-type ServiceResponseErrorType = 401 | 400;
+type ServiceResponseErrorType = 401 | 400 | 404;
 
 export type ServiceResponseError = {
   status: ServiceResponseErrorType,

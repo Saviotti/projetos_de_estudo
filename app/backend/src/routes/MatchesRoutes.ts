@@ -26,6 +26,7 @@ router.patch(
 router.post(
   '/',
   userValidation.tokenValitation,
+  userValidation.teamsValidation,
   (req: Request, res: Response) => matchesController.createMatches(req, res),
 );
 

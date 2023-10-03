@@ -1,3 +1,4 @@
+import TeamModel from '../modelClasses/TeamModel';
 import { ServiceResponse, ServiceMessage } from '../Interfaces/serviceResponse';
 import IMatchesModel from '../Interfaces/IMatchesModel';
 import MatcheModel from '../modelClasses/funcMatches';
@@ -32,6 +33,12 @@ export default class MatchesService {
   }
 
   public async createMatches(newMatchData: ICreateMatch): Promise<ServiceResponse<IMatches>> {
+    const teamModel = new TeamModel();
+    const homeTeamDB = await teamModel.findOne(newMatchData.homeTeamId);
+    const awayTeamDB = await teamModel.findOne(newMatchData.awayTeamId);
+    if (!homeTeamDB || !awayTeamDB) {
+      return { status: 404, data: { message: 'There is no team with such id!' } };
+    }
     const newCreatedMatches = await this.matchesModel.createMatches(newMatchData);
     return { status: 201, data: newCreatedMatches };
   }
