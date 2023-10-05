@@ -11,6 +11,7 @@ export default class MatchesController {
     if (inProgress) {
       const value = inProgress === 'true';
       const data = await this.matchService.findAllInProgressMatches(value);
+      console.log('data de find all controller', data);
       return res.status(200).json(data);
     }
     const matches = await this.matchService.findAll();
