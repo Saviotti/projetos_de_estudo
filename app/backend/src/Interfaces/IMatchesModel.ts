@@ -5,4 +5,5 @@ export default interface IMatchesModel {
   finishMatches(id: number): Promise<string>
   updateMatches(matchData: IMatchesUpdate): Promise<void>
   createMatches(newMatchData: ICreateMatch): Promise<any>
+  getAllHomeMatches(teamId: number): Promise<any>
 }

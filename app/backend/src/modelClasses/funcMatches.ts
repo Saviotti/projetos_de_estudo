@@ -1,3 +1,4 @@
+import sequelize = require('sequelize');
 import TeamsModel from '../database/models/TeamsModel';
 import IMatches, { ICreateMatch, IMatchesUpdate } from '../Interfaces/IMatches';
 import IMatchesModel from '../Interfaces/IMatchesModel';
@@ -30,5 +31,15 @@ export default class MatcheModel implements IMatchesModel {
     const newMatches = { ...newMatchData, inProgress: true };
     const data = await this.model.create(newMatches);
     return data;
+  }
+
+  public async getAllHomeMatches(teamId: number): Promise<IMatches[]> {
+    const allTems = await this.model.findAll({
+      where: {
+        [sequelize.Op.or]: [{ homeTeamId: teamId }],
+        inProgress: false,
+      },
+    });
+    return allTems;
   }
 }

@@ -5,8 +5,6 @@ import { ServiceResponse } from '../Interfaces/serviceResponse';
 import UserModel from '../modelClasses/funcUsers';
 import IUsersModel from '../Interfaces/IUsersModel';
 
-// const jwtsecretenv = process.env.JWT_SECRET || 'jwt_secret';
-
 export default class UsersService {
   constructor(
     private userModel: IUsersModel = new UserModel(),
