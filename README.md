@@ -1,10 +1,7 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Projeto de back-end desenvolvido no curso da Trybe.
+
+Esse projeto foi desenvolvido seguindo uma linha de aprendizado, tais quais:
+* ORM e como ele realiza operações em banco de dados relacional.
+* Construção de API's.
+* Execução de aplicação em vários ambientes isolados (containers).
+* Criação de um serviço de comunicação entre ambientes isolados em um mesmo host com o docker-compose.
